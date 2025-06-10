@@ -1,0 +1,80 @@
+body {
+    background-image: url(/public/Sprinkle.svg);
+}
+
+
+
+/* HEADER */
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: #0f2c57;
+}
+
+.logo img {
+    width: 100px;
+}
+
+.title img {
+    width: 300px;
+}
+
+/* Card */
+
+.card {
+    width: 230px;
+    border-radius: 20px;
+    background: #0c2345;
+    padding: 5px;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card .top-section {
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.card img {
+    height: 240px;
+}
+
+.card .top-section .icons {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    background-color: #1b233d;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.card .top-section .icons .social-media {
+    height: 100%;
+    padding: 5px 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.card .bottom-section {
+    padding: 10px 5px;
+}
+
+.card .bottom-section .title {
+    display: block;
+    font-size: 17px;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+}
