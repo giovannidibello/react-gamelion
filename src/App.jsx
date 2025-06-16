@@ -8,11 +8,11 @@ import DefaultLayout from "./layouts/DefaultLayout";
 
 // Pages
 import HomePage from "./pages/HomePage"
+import NotFoundPage from "./pages/NotFoundPage";
 
 // import bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
-
 
 function App() {
 
@@ -22,8 +22,7 @@ function App() {
         <Routes>
           <Route element={<DefaultLayout />} >
             <Route index path="/" element={<HomePage />} />
-            {/* <Route index path="game/:id" element={<GamePage />} /> */}
-            {/* <Route path="*" element={<NotFoundPage />} /> */}
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
