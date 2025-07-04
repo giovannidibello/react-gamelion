@@ -1,25 +1,28 @@
 // GameCard.jsx
 
-// importo il componente sidebar
+// importo il componente che mostra i dettagli del gioco in una sidebar
 import GameSidebar from "./GameSideBar";
-// importo il componente delle icone delle piattaforme
+// importo il componente che mostra l'icona della piattaforma
 import PlatformIcon from "../components/PlatformIcon";
 
-const GameCard = ({ gameProp, activeCardId, setActiveCardId }) => {
+// componente che rappresenta una singola card del gioco
+const GameCard = ({ game, activeCardId, setActiveCardId }) => {
 
+    // URL base per caricare l'immagine di copertina
     const coverBaseUrl = import.meta.env.VITE_COVER_API_URL;
 
-    const { id, title, cover_image, platforms } = gameProp;
+    // destrutturo i dati principali del gioco
+    const { id, title, cover_image, platforms } = game;
 
-    // funzione al click sulla card
+    // gestisco il click sulla card: apre/chiude la sidebar
     const handleCardClick = () => {
-        setActiveCardId(prevId => (prevId === id ? null : id)); // cambio card e chiudo la precedente
+        // se la card è già attiva, la chiude; altrimenti la imposta come attiva
+        setActiveCardId(prevId => (prevId === id ? null : id));
     };
 
     return (
 
         <>
-
             <div className="card" onClick={handleCardClick}>
                 <div className="top-section">
                     <div className="icons">
@@ -32,11 +35,9 @@ const GameCard = ({ gameProp, activeCardId, setActiveCardId }) => {
                 <div className="bottom-section">
                     <h5 className="title mb-0">{title}</h5>
                 </div>
-
             </div>
 
-            {activeCardId === id && <GameSidebar game={gameProp} isOpen={activeCardId === id} onClose={() => setActiveCardId(null)} />}
-
+            {activeCardId === id && <GameSidebar game={game} isOpen={true} onClose={() => setActiveCardId(null)} />}
         </>
 
     );

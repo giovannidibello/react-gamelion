@@ -1,10 +1,13 @@
 // GameSideBar.jsx
 
+// componente che mostra i dettagli di un gioco in una sidebar laterale
 const GameSideBar = ({ game, isOpen, onClose }) => {
 
+    // estraggo generi e piattaforme dal gioco
     const { genres, platforms } = game;
 
     return (
+        // contenitore della sidebar, con classi dinamiche per visibilità e overlay
         <div className={`sidebar ${isOpen ? "overlay visible" : ""}`}>
             <button className="close-btn" onClick={onClose}>✖</button>
             <h2>{game.title}</h2>

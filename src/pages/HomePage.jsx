@@ -13,7 +13,7 @@ import GameCard from '../components/GameCard';
 
 export default function HomePage() {
 
-    // setto lo stato per i giochi e i giochi filtrati
+    // setto gli stati per i giochi e i giochi filtrati
     const [games, setGames] = useState([]);
     const [filteredGames, setFilteredGames] = useState(games);
 
@@ -23,20 +23,18 @@ export default function HomePage() {
     const [selectedPlatform, setSelectedPlatform] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
 
-    // setto gli stati per ordinare
+    // setto gli stati per ordinamento
     const [sortOrderTitle, setSortOrderTitle] = useState("asc");
     const [sortOrderDate, setSortOrderDate] = useState("asc");
 
-    // setto gli stati per la visualizzazione (searchbar e card attiva)
+    // UI (barra ricerca visibile + card attiva)
     const [showSearch, setShowSearch] = useState(false);
     const [activeCardId, setActiveCardId] = useState(null);
 
-    // funzione chiamata dei dati lista giochi (index)
+    // ottengo i giochi dal backend (index)
     const fetchGames = (search = "") => {
 
-        axios.get(`${import.meta.env.VITE_API_URL}`, {
-            params: { search }
-        })
+        axios.get(`${import.meta.env.VITE_API_URL}`, { params: { search } })
 
             .then(
                 res => {
@@ -44,25 +42,21 @@ export default function HomePage() {
                     setGames(data)
                 }
             )
-
             .catch(err => console.log(err)
             )
-
     }
 
-    // funzione per filtrare tramite cerca
+    // aggiorno il testo della ricerca
     const handleSearch = (event) => {
-        console.log("Valore digitato:", event.target.value);
         setSearchTerm(event.target.value);
-        fetchGames(event.target.value);
     };
 
-    // funzione per filtrare per piattaforma
+    // applico filtro per piattaforma
     const filterGames = (id) => {
         setSelectedPlatform(id)
     };
 
-    // funzione per ordinare i giochi
+    // ordino i giochi per titolo e data
     const sortGames = (type) => {
         let sorted = [...filteredGames];
 
@@ -87,22 +81,21 @@ export default function HomePage() {
         setFilteredGames(sorted);
     };
 
-
+    // debounce per la ricerca (500ms)
     useEffect(() => {
-        // debounce per la ricerca
         const delaySearch = setTimeout(() => {
             fetchGames(searchTerm);
-        }, 300);
+        }, 500);
 
         return () => clearTimeout(delaySearch);
     }, [searchTerm]);
 
+    // quando arrivano giochi nuovi, li metto in filteredGame
     useEffect(() => {
-        // aggiorno la lista filtrata quando i giochi cambiano
         setFilteredGames(games);
     }, [games]);
 
-    // funzione per estrai generi unici
+    // estraggo generi unici dai giochi
     useEffect(() => {
         const uniqueGenres = new Map();
 
@@ -119,7 +112,7 @@ export default function HomePage() {
     }, [games]);
 
 
-    // funzione filtri combinati
+    // applico filtro per genere e piattaforma
     useEffect(() => {
         let updatedList = [...games];
 
@@ -137,24 +130,17 @@ export default function HomePage() {
             );
         }
 
-        // filtro per titolo
-        if (searchTerm !== "") {
-            updatedList = updatedList.filter(game =>
-                game.title.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-        }
-
         setFilteredGames(updatedList);
-    }, [games, selectedGenre, selectedPlatform, searchTerm]);
+    }, [games, selectedGenre, selectedPlatform]);
 
 
-    // funzione di rendering delle card dei giochi
+    // rendering delle card dei giochi
     const renderGames = () => {
 
         return filteredGames.map((game) =>
 
             <div key={game.id} className="d-flex justify-content-center col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <GameCard gameProp={game} activeCardId={activeCardId} setActiveCardId={setActiveCardId} />
+                <GameCard game={game} activeCardId={activeCardId} setActiveCardId={setActiveCardId} />
             </div>
         )
     }
