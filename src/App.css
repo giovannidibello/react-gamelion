@@ -70,6 +70,7 @@ h1 {
     overflow: hidden;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
 }
 
 .card:hover {
@@ -230,7 +231,7 @@ h1 {
 
 .btn-platform {
     background-color: #0f2c57;
-    color: #fff;
+    color: #f85e1e;
     border: 1px solid #f85e1e;
     padding: 10px 15px;
     font-size: 16px;
