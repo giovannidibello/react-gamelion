@@ -1,12 +1,79 @@
-# React + Vite
+# 🎮 Gamelion - Frontend React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interfaccia utente pubblica per la WebApp **Gamelion**, sviluppata con **React**.  
+Consuma le API fornite dal backend Laravel per visualizzare videogiochi, generi e dettagli.  
+Design moderno e responsive con componenti riutilizzabili.
 
-Currently, two official plugins are available:
+## 🖥️ Tecnologie utilizzate
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- React Router DOM
+- Axios
+- Bootstrap 5
+- Font Awesome
+- Vite
 
-## Expanding the ESLint configuration
+## 📸 Preview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+![Demo GIF](public/gamelion-demo-fe.gif)  
+> Anteprima dell’interfaccia pubblica con elenco e dettaglio giochi.
+
+## 📁 Struttura del Progetto
+
+react-gamelion/
+├── public/
+│ ├── gamelion-logo.png
+│ └── gamelion-demo.gif
+├── src/
+│ ├── assets/ # Icone e immagini
+│ ├── components/ # Card, Navbar, Footer, GameDetail, ecc.
+│ ├── pages/ # HomePage, GameDetailPage
+│ ├── App.jsx
+│ └── main.jsx
+├── .env.example
+├── vite.config.js
+└── README.md
+
+
+## 🚀 Avvio del progetto
+
+1. Clona la repository:
+
+```bash
+git clone https://github.com/giovannidibello/react-gamelion.git
+cd react-gamelion
+
+npm install
+
+cp .env.example .env
+# Inserisci l'URL del backend Laravel, ad esempio:
+# VITE_API_URL=http://127.0.0.1:8000/api
+
+npm run dev
+
+Visita: http://localhost:5173
+
+## 🎯 Funzionalità
+
+- ✅ Visualizzazione elenco videogiochi con **card responsive**
+- ✅ **Filtri** per genere e piattaforma
+- ✅ **Ricerca testuale** con debounce
+- ✅ Pagine di **dettaglio** per ogni gioco con immagine e descrizione
+- ✅ Navigazione SPA tramite **React Router**
+- ✅ Chiamate API asincrone con **Axios**
+- ✅ **Design moderno e responsive** con Bootstrap
+
+## 🧠 Obiettivi didattici
+
+- 📌 Creare una **Single Page Application (SPA)** con React
+- 📌 Utilizzare **React Router DOM** per la navigazione dinamica
+- 📌 Consumare API RESTful fornite dal backend Laravel
+- 📌 Progettare e riutilizzare componenti UI (es. `Card`, `Navbar`, `Footer`)
+- 📌 Gestire lo stato e passaggio di props tra componenti
+- 📌 Applicare uno stile **responsive** con Bootstrap 5
+
+## 👨‍💻 Autore
+
+- **Giovanni Di Bello**  
+- [GitHub](https://github.com/giovannidibello)
+
